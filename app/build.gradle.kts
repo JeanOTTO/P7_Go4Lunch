@@ -23,6 +23,8 @@ android {
 
     buildTypes {
         release {
+            // TODO: Re-enable R8/ProGuard (optimization.enable = true) once core features are
+            // implemented and we've written keep-rules for Firebase/Gson. See CLAUDE.md "Known TODOs".
             optimization {
                 enable = false
             }
