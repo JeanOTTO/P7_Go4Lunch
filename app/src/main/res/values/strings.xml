@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Go4Lunch</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="error_google_sign_in">Google sign-in failed. Please try again.</string>
+    <string name="error_no_google_account">No Google account found on this device. Add one in Settings and try again.</string>
 </resources>
