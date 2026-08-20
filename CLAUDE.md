@@ -75,3 +75,4 @@ On Windows use `gradlew.bat` in place of `./gradlew` when running outside a POSI
 ## Known TODOs
 
 - **R8/ProGuard is currently disabled** for the `release` build type (`app/build.gradle.kts`, `optimization.enable = false`), even though release builds are required to be obfuscated (see Auth & platform constraints). This is intentional for now — re-enable it once core features are implemented and keep-rules for Firebase/Gson have been written, before final delivery.
+- **No automatic overnight reset of restaurant interest data**: `restaurants/{placeId}.interestedUserIds` and `users/{uid}.todayChoicePlaceId` (written by `RestaurantRepository.setUserChoice`) have no date field, so a user's lunch choice persists until they explicitly pick another restaurant rather than resetting daily. To fix later via a scheduled Cloud Function or a date-based staleness check.
