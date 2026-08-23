@@ -1,3 +1,9 @@
+/*
+The ViewModel is the intermediary between the screen (LoginActivity, which we'll see next) and the Repository.
+It prepares the data to be displayed and reacts to user actions, but it never knows anything about Android's UI (no buttons, no screens)
+Only contains logic.
+*/
+
 package com.jeanotto.go4lunch.viewmodel;
 
 import androidx.annotation.NonNull;

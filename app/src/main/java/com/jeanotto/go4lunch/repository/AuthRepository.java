@@ -1,3 +1,9 @@
+/*
+AuthRepository is the single entry point for the entire application to Firebase for anything related to user
+authentication and sign-out. No other part of the code should communicate directly with Firebase for authentication.
+*/
+
+
 package com.jeanotto.go4lunch.repository;
 
 import com.google.firebase.auth.AuthCredential;

@@ -1,3 +1,8 @@
+/*
+Resource is used to wrap data together with its current state (loading, success, or error)
+so that any part of the app can know not only what the data is, but also where it is in its lifecycle.
+*/
+
 package com.jeanotto.go4lunch.model;
 
 public class Resource<T> {
