@@ -110,7 +110,7 @@ public class RestaurantRepository {
 
     public void fetchNearbyRestaurants(double lat, double lng, RestaurantsCallback callback) {
         String location = lat + "," + lng;
-        placesApiService.getNearbyRestaurants(location, NEARBY_SEARCH_RADIUS_METERS, NEARBY_SEARCH_TYPE, BuildConfig.MAPS_API_KEY)
+        placesApiService.getNearbyRestaurants(location, NEARBY_SEARCH_RADIUS_METERS, NEARBY_SEARCH_TYPE, BuildConfig.PLACES_API_KEY)
                 .enqueue(new Callback<NearbySearchResponse>() {
                     @Override
                     public void onResponse(Call<NearbySearchResponse> call, Response<NearbySearchResponse> response) {
@@ -140,7 +140,7 @@ public class RestaurantRepository {
     }
 
     public void fetchRestaurantDetails(String placeId, RestaurantCallback callback) {
-        placesApiService.getPlaceDetails(placeId, DETAILS_FIELDS, BuildConfig.MAPS_API_KEY)
+        placesApiService.getPlaceDetails(placeId, DETAILS_FIELDS, BuildConfig.PLACES_API_KEY)
                 .enqueue(new Callback<PlaceDetailsResponse>() {
                     @Override
                     public void onResponse(Call<PlaceDetailsResponse> call, Response<PlaceDetailsResponse> response) {
@@ -255,7 +255,7 @@ public class RestaurantRepository {
         }
         return PHOTO_BASE_URL + "?maxwidth=" + PHOTO_MAX_WIDTH
                 + "&photo_reference=" + photos.get(0).getPhotoReference()
-                + "&key=" + BuildConfig.MAPS_API_KEY;
+                + "&key=" + BuildConfig.PLACES_API_KEY;
     }
 
     private String buildOpeningHoursText(OpeningHoursDto openingHours) {

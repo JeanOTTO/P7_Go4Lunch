@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Go4Lunch</string>
+    <string name="sign_in_with_google">Se connecter avec Google</string>
+    <string name="error_google_sign_in">Échec de la connexion avec Google. Veuillez réessayer.</string>
+    <string name="error_no_google_account">Aucun compte Google trouvé sur cet appareil. Ajoutez-en un dans les paramètres et réessayez.</string>
+    <string name="label_map">Carte</string>
+    <string name="label_list">Liste</string>
+    <string name="label_workmates">Collègues</string>
+    <string name="recenter_on_my_location">Recentrer sur ma position</string>
+    <string name="error_location_unavailable">Impossible d\'obtenir votre position. Veuillez réessayer.</string>
+    <string name="error_location_permission_denied">L\'accès à la position est nécessaire pour afficher les restaurants à proximité.</string>
+    <string name="error_restaurants_unavailable">Impossible de charger les restaurants à proximité.</string>
+    <string name="retry">Réessayer</string>
+    <string name="settings">Paramètres</string>
+</resources>

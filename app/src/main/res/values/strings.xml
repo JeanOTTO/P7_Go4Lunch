@@ -6,4 +6,10 @@
     <string name="label_map">Map</string>
     <string name="label_list">List</string>
     <string name="label_workmates">Workmates</string>
+    <string name="recenter_on_my_location">Recenter on my location</string>
+    <string name="error_location_unavailable">Unable to get your location. Please try again.</string>
+    <string name="error_location_permission_denied">Location access is needed to show nearby restaurants.</string>
+    <string name="error_restaurants_unavailable">Unable to load nearby restaurants.</string>
+    <string name="retry">Retry</string>
+    <string name="settings">Settings</string>
 </resources>
