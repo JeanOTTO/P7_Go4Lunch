@@ -11,7 +11,6 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -158,6 +157,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
         lastKnownUserLatLng = new LatLng(location.getLatitude(), location.getLongitude());
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lastKnownUserLatLng, DEFAULT_ZOOM));
+        restaurantViewModel.setUserLocation(location.getLatitude(), location.getLongitude());
         restaurantViewModel.loadNearbyRestaurants(location.getLatitude(), location.getLongitude());
     }
 

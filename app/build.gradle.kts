@@ -88,4 +88,7 @@ dependencies {
     // Google Maps + FusedLocationProviderClient: map screen and current-location lookup
     implementation(libs.play.services.maps)
     implementation(libs.play.services.location)
+
+    // RecyclerView: restaurant list screen
+    implementation(libs.androidx.recyclerview)
 }

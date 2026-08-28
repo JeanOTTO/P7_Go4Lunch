@@ -5,6 +5,9 @@ It prepares the data to be displayed and reacts to user actions, but it never kn
 loadNearbyRestaurants is guarded against repeated network calls (Green Code requirement): once the list is LOADING
 or has SUCCESS data, further calls are no-ops. This relies on RestaurantViewModel being shared at Activity scope
 so the guard holds across fragment navigation, not just within a single fragment's lifecycle.
+
+userLocation is shared for the same reason: whichever fragment (Map or List) obtains a location fix first publishes
+it here, so the other fragment can compute distances or trigger loadNearbyRestaurants without requesting its own fix.
 */
 
 package com.jeanotto.go4lunch.viewmodel;
@@ -17,6 +20,7 @@ import androidx.lifecycle.ViewModel;
 import com.jeanotto.go4lunch.model.Resource;
 import com.jeanotto.go4lunch.model.Restaurant;
 import com.jeanotto.go4lunch.model.RestaurantInterest;
+import com.jeanotto.go4lunch.model.UserLocation;
 import com.jeanotto.go4lunch.repository.RestaurantRepository;
 
 import java.util.List;
@@ -30,6 +34,7 @@ public class RestaurantViewModel extends ViewModel {
     private final MutableLiveData<Resource<RestaurantInterest>> restaurantInterest = new MutableLiveData<>();
     private final MutableLiveData<Resource<Void>> chooseRestaurantResult = new MutableLiveData<>();
     private final MutableLiveData<Resource<Boolean>> toggleLikeResult = new MutableLiveData<>();
+    private final MutableLiveData<UserLocation> userLocation = new MutableLiveData<>();
 
     public RestaurantViewModel(@NonNull RestaurantRepository restaurantRepository) {
         this.restaurantRepository = restaurantRepository;
@@ -53,6 +58,14 @@ public class RestaurantViewModel extends ViewModel {
 
     public LiveData<Resource<Boolean>> getToggleLikeResult() {
         return toggleLikeResult;
+    }
+
+    public LiveData<UserLocation> getUserLocation() {
+        return userLocation;
+    }
+
+    public void setUserLocation(double latitude, double longitude) {
+        userLocation.setValue(new UserLocation(latitude, longitude));
     }
 
     public void loadNearbyRestaurants(double lat, double lng) {
