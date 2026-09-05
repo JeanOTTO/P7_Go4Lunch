@@ -11,21 +11,24 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.jeanotto.go4lunch.R;
 import com.jeanotto.go4lunch.ui.auth.LoginActivity;
 import com.jeanotto.go4lunch.ui.list.ListFragment;
 import com.jeanotto.go4lunch.ui.map.MapFragment;
 import com.jeanotto.go4lunch.ui.workmates.WorkmatesFragment;
+import com.jeanotto.go4lunch.viewmodel.AuthViewModel;
+import com.jeanotto.go4lunch.viewmodel.ViewModelFactory;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+        AuthViewModel authViewModel = new ViewModelProvider(this, ViewModelFactory.getInstance()).get(AuthViewModel.class);
+        if (!authViewModel.isUserLoggedIn()) {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
             return;
