@@ -1,3 +1,9 @@
+/*
+Restaurant represents a single place returned by the Google Places API, holding the details needed to
+display it in the list, map, and detail screens (name, address, coordinates, contact info, photo, rating,
+opening hours). It is the core data model produced and consumed through RestaurantRepository.
+*/
+
 package com.jeanotto.go4lunch.model;
 
 public class Restaurant {
