@@ -29,9 +29,18 @@ import java.util.Locale;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder> {
 
+    public interface OnRestaurantClickListener {
+        void onRestaurantClick(@NonNull Restaurant restaurant);
+    }
+
+    private final OnRestaurantClickListener onRestaurantClickListener;
     private List<Restaurant> restaurants = Collections.emptyList();
     @Nullable
     private UserLocation userLocation;
+
+    public RestaurantAdapter(@NonNull OnRestaurantClickListener onRestaurantClickListener) {
+        this.onRestaurantClickListener = onRestaurantClickListener;
+    }
 
     // Full list replacement/re-render on every update; DiffUtil would be the next step if this
     // list becomes large enough for the naive full rebind to be noticeable.
@@ -57,7 +66,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
     @Override
     public void onBindViewHolder(@NonNull RestaurantViewHolder holder, int position) {
-        holder.bind(restaurants.get(position), userLocation);
+        holder.bind(restaurants.get(position), userLocation, onRestaurantClickListener);
     }
 
     @Override
@@ -84,13 +93,15 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
             ratingBar = itemView.findViewById(R.id.rating_bar_restaurant);
         }
 
-        void bind(@NonNull Restaurant restaurant, @Nullable UserLocation userLocation) {
+        void bind(@NonNull Restaurant restaurant, @Nullable UserLocation userLocation,
+                  @NonNull OnRestaurantClickListener onRestaurantClickListener) {
             nameView.setText(restaurant.getName());
             typeView.setText(restaurant.getType());
             addressView.setText(restaurant.getAddress());
             hoursView.setText(restaurant.getOpeningHoursText());
             ratingBar.setRating((float) restaurant.getRating());
             distanceView.setText(formatDistance(restaurant, userLocation));
+            itemView.setOnClickListener(v -> onRestaurantClickListener.onRestaurantClick(restaurant));
         }
 
         private String formatDistance(@NonNull Restaurant restaurant, @Nullable UserLocation userLocation) {

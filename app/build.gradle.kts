@@ -91,4 +91,7 @@ dependencies {
 
     // RecyclerView: restaurant list screen
     implementation(libs.androidx.recyclerview)
+
+    // Glide: restaurant photo loading on the detail screen
+    implementation(libs.glide)
 }

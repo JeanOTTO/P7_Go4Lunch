@@ -32,6 +32,7 @@ import com.jeanotto.go4lunch.R;
 import com.jeanotto.go4lunch.model.Resource;
 import com.jeanotto.go4lunch.model.Restaurant;
 import com.jeanotto.go4lunch.model.UserLocation;
+import com.jeanotto.go4lunch.ui.detail.RestaurantDetailActivity;
 import com.jeanotto.go4lunch.viewmodel.RestaurantViewModel;
 import com.jeanotto.go4lunch.viewmodel.ViewModelFactory;
 
@@ -73,7 +74,8 @@ public class ListFragment extends Fragment {
         rootView = view;
         progressBar = view.findViewById(R.id.progress_bar_list);
 
-        adapter = new RestaurantAdapter();
+        adapter = new RestaurantAdapter(restaurant ->
+                RestaurantDetailActivity.start(requireContext(), restaurant.getPlaceId()));
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_restaurants);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setAdapter(adapter);

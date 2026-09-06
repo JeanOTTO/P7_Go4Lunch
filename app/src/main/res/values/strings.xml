@@ -12,4 +12,17 @@
     <string name="error_restaurants_unavailable">Unable to load nearby restaurants.</string>
     <string name="retry">Retry</string>
     <string name="settings">Settings</string>
+    <string name="error_restaurant_details_unavailable">Unable to load restaurant details.</string>
+    <string name="error_toggle_like">Unable to update like. Please try again.</string>
+    <string name="error_choose_restaurant">Unable to save your choice. Please try again.</string>
+    <string name="restaurant_chosen_confirmation">You\'re set for lunch here today!</string>
+    <string name="call_restaurant">Call</string>
+    <string name="visit_website">Website</string>
+    <string name="like_restaurant">Like</string>
+    <string name="choose_this_restaurant">Choose this restaurant</string>
+    <string name="back">Back</string>
+    <plurals name="colleagues_interested">
+        <item quantity="one">%d colleague going here today</item>
+        <item quantity="other">%d colleagues going here today</item>
+    </plurals>
 </resources>

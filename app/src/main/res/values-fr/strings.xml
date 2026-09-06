@@ -12,4 +12,18 @@
     <string name="error_restaurants_unavailable">Impossible de charger les restaurants à proximité.</string>
     <string name="retry">Réessayer</string>
     <string name="settings">Paramètres</string>
+    <string name="error_restaurant_details_unavailable">Impossible de charger les détails du restaurant.</string>
+    <string name="error_toggle_like">Impossible de mettre à jour le like. Veuillez réessayer.</string>
+    <string name="error_choose_restaurant">Impossible d\'enregistrer votre choix. Veuillez réessayer.</string>
+    <string name="restaurant_chosen_confirmation">C\'est décidé, vous déjeunez ici aujourd\'hui !</string>
+    <string name="call_restaurant">Appeler</string>
+    <string name="visit_website">Site web</string>
+    <string name="like_restaurant">Aimer</string>
+    <string name="choose_this_restaurant">Choisir ce restaurant</string>
+    <string name="back">Retour</string>
+    <plurals name="colleagues_interested">
+        <item quantity="one">%d collègue y déjeune aujourd\'hui</item>
+        <item quantity="many">%d de collègues y déjeunent aujourd\'hui</item>
+        <item quantity="other">%d collègues y déjeunent aujourd\'hui</item>
+    </plurals>
 </resources>

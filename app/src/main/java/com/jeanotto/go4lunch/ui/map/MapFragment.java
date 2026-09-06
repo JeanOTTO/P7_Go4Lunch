@@ -27,6 +27,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.CancellationTokenSource;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -34,6 +35,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.jeanotto.go4lunch.R;
 import com.jeanotto.go4lunch.model.Resource;
 import com.jeanotto.go4lunch.model.Restaurant;
+import com.jeanotto.go4lunch.ui.detail.RestaurantDetailActivity;
 import com.jeanotto.go4lunch.viewmodel.RestaurantViewModel;
 import com.jeanotto.go4lunch.viewmodel.ViewModelFactory;
 
@@ -90,8 +92,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(@NonNull GoogleMap map) {
         googleMap = map;
         googleMap.getUiSettings().setMyLocationButtonEnabled(false);
+        googleMap.setOnMarkerClickListener(this::onMarkerClicked);
         observeNearbyRestaurants();
         checkLocationPermissionAndProceed();
+    }
+
+    private boolean onMarkerClicked(@NonNull Marker marker) {
+        Object tag = marker.getTag();
+        if (tag instanceof Restaurant) {
+            RestaurantDetailActivity.start(requireContext(), ((Restaurant) tag).getPlaceId());
+        }
+        return false;
     }
 
     private void checkLocationPermissionAndProceed() {
@@ -186,9 +197,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             case SUCCESS:
                 googleMap.clear();
                 for (Restaurant restaurant : resource.getData()) {
-                    googleMap.addMarker(new MarkerOptions()
+                    Marker marker = googleMap.addMarker(new MarkerOptions()
                             .position(new LatLng(restaurant.getLatitude(), restaurant.getLongitude()))
                             .title(restaurant.getName()));
+                    if (marker != null) {
+                        marker.setTag(restaurant);
+                    }
                 }
                 break;
             case ERROR:

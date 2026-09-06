@@ -17,6 +17,7 @@ gson = "2.11.0"
 playServicesMaps = "20.0.0"
 playServicesLocation = "21.4.0"
 recyclerview = "1.4.0"
+glide = "4.16.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -39,6 +40,7 @@ gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
 play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
